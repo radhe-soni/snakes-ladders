@@ -26,6 +26,7 @@ public class Board {
 		player.move(steps);
 		Snake snake = snakes[player.getPosition()-1];
 		if(snake != null) {
+			System.out.printf("<;==== Snake encountered at %d ==== %n", snake.getMouthPosition());
 			player.setPosition(snake.getTailPosition());
 		}
 		return steps;
