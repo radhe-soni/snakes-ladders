@@ -9,8 +9,11 @@ import spock.lang.Specification
 class BoardSpec extends Specification {
 
 	def "Dice should return a number between 1 and 6"(){
+		given:
+		Dice dice = new Dice()
+		Board board = new Board(dice)
 		when:
-		int result = Dice.roll()
+		int result = board.rollDice()
 		then:
 		Math.max(Dice.MIN, result) == result
 		Math.min(Dice.MAX, result) == result
