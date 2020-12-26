@@ -8,11 +8,6 @@ import spock.lang.Specification
 
 class BoardSpec extends Specification {
 
-	static final int BOARD_MIN_POSTION = 0
-
-	static final int BOARD_MAX_POSTION = 100
-
-	
 	def "Dice should return a number between 1 and 6"(){
 		when:
 		int result = Dice.roll()
@@ -42,7 +37,7 @@ class BoardSpec extends Specification {
 		when:
 		Player player = new Player()
 		then:
-		player.getPosition() == BOARD_MIN_POSTION-1
+		player.getPosition() == Board.MIN_POSTION-1
 	}
 	def "player should have maximum position 100"(){
 		given:
@@ -51,6 +46,6 @@ class BoardSpec extends Specification {
 		for(int i=1;i<=20;i++)
 			player.move(i*Dice.MAX)
 		then:
-		player.getPosition() <= BOARD_MAX_POSTION
+		player.getPosition() <=Board.MAX_POSTION
 	}
 }
