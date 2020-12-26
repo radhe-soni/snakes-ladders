@@ -59,4 +59,15 @@ class BoardSpec extends Specification {
 		then:
 		board.getPlayer()
 	}
+	
+	def "when the dice is rolled player must move"(){
+		given:
+		Board board = new Board(new Dice())
+		Player player = new Player()
+		board.addPlayer(player)
+		when:
+		int result = board.rollDice()
+		then:
+		player.getPosition() == result
+	}
 }
