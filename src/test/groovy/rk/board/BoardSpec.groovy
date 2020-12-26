@@ -44,4 +44,19 @@ class BoardSpec extends Specification {
 		def snakes = board.getSnakes()
 		snakes[14-1] == snake
 	}
+	
+	def "player should return to tail if a mouth of snake is encountered"(){
+		given:
+		Board board = new Board(new Dice())
+		Snake snake = new Snake(14, 7)
+		Player player = new Player()
+		board.addPlayer(player)
+		board.addSnake(snake)
+		when:
+		player.move(6)
+		player.move(6)
+		player.move(2)
+		then:
+		player.getPosition() == 7
+	}
 }
