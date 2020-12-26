@@ -10,8 +10,7 @@ class BoardSpec extends Specification {
 
 	def "Dice should return a number between 1 and 6"(){
 		given:
-		Dice dice = new Dice()
-		Board board = new Board(dice)
+		Board board = new Board(new Dice())
 		when:
 		int result = board.rollDice()
 		then:
@@ -50,5 +49,14 @@ class BoardSpec extends Specification {
 			player.move(i*Dice.MAX)
 		then:
 		player.getPosition() <=Board.MAX_POSTION
+	}
+	
+	def "board should allow to add a player"(){
+		given:
+		Board board = new Board(new Dice())
+		when:
+		board.addPlayer(new Player())
+		then:
+		board.getPlayer()
 	}
 }
