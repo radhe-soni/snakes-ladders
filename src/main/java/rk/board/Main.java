@@ -3,7 +3,7 @@ package rk.board;
 public class Main {
 
 	public static void main(String[] args) {
-		Board board = new Board(new Dice());
+		Board board = new Board(new FairDice());
 		Player player = new Player();
 		board.addPlayer(player);
 		for (int i = 0; i < 10; i++) {

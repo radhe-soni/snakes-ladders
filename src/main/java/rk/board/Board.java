@@ -22,6 +22,10 @@ public class Board {
 	public int useTurn() {
 		int steps = rollDice();
 		player.move(steps);
+		Snake snake = snakes[player.getPosition()-1];
+		if(snake != null) {
+			player.setPosition(snake.getTailPosition());
+		}
 		return steps;
 	}
 

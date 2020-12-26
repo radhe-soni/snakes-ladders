@@ -18,4 +18,8 @@ public class Snake {
 	public int getMouthPosition() {
 		return mouthPosition;
 	}
+
+	public int getTailPosition() {
+		return this.tailPosition;
+	}
 }
