@@ -6,15 +6,7 @@ import spock.lang.Specification
 
 class BoardSpec extends Specification {
 
-	def "Dice should return a number between 1 and 6"(){
-		given:
-		Board board = new Board(new FairDice())
-		when:
-		int result = board.rollDice()
-		then:
-		Math.max(Dice.MIN, result) == result
-		Math.min(Dice.MAX, result) == result
-	}
+	
 	
 	def "board should allow to add a player"(){
 		given:
