@@ -60,14 +60,14 @@ class BoardSpec extends Specification {
 		board.getPlayer()
 	}
 	
-	def "when the dice is rolled player must move"(){
+	def "when a turn is used player must move"(){
 		given:
 		Board board = new Board(new Dice())
 		Player player = new Player()
 		board.addPlayer(player)
 		when:
-		int result = board.rollDice()
+		int steps = board.useTurn()
 		then:
-		player.getPosition() == result
+		player.getPosition() == steps
 	}
 }
