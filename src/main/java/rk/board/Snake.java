@@ -1,8 +1,8 @@
 package rk.board;
 
 public class Snake {
-	private int mouthPosition;
-	private int tailPosition;
+	private final int mouthPosition;
+	private final int tailPosition;
 
 	public Snake(int mouthPosition, int tailPosition) {
 		if (mouthPosition <= tailPosition)
@@ -15,4 +15,7 @@ public class Snake {
 		this.tailPosition = tailPosition;
 	}
 	
+	public int getMouthPosition() {
+		return mouthPosition;
+	}
 }

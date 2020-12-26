@@ -33,4 +33,15 @@ class BoardSpec extends Specification {
 		then:
 		player.getPosition() == steps
 	}
+	
+	def "board should allow to add a snake"(){
+		given:
+		Board board = new Board(new Dice())
+		Snake snake = new Snake(14, 7)
+		when:
+		board.addSnake(snake)
+		then:
+		def snakes = board.getSnakes()
+		snakes[14-1] == snake
+	}
 }
