@@ -1,5 +1,7 @@
 package rk.board;
 
+import rk.board.dice.Dice;
+
 public class Board {
 	private static final int SNAKE_FREE_POSITIONS = 2;
 	public static final int MIN_POSTION = 1;

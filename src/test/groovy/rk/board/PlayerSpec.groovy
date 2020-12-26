@@ -4,6 +4,7 @@ import static org.junit.Assert.*
 
 import org.junit.Test
 
+import rk.board.dice.Dice
 import spock.lang.Specification
 
 class PlayerSpec extends Specification {

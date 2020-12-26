@@ -1,4 +1,4 @@
-package rk.board;
+package rk.board.dice;
 
 public interface Dice {
 	public static final int MIN = 1;

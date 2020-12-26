@@ -1,4 +1,4 @@
-package rk.board;
+package rk.board.dice;
 
 import java.util.Random;
 

@@ -1,5 +1,7 @@
 package rk.board
 
+import rk.board.dice.Dice
+import rk.board.dice.FairDice
 import spock.lang.Specification
 
 class BoardSpec extends Specification {

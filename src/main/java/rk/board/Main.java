@@ -1,5 +1,7 @@
 package rk.board;
 
+import rk.board.dice.FairDice;
+
 public class Main {
 
 	public static void main(String[] args) {
