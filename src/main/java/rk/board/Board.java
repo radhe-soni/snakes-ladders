@@ -10,7 +10,7 @@ public class Board {
 	private Dice dice;
 	private Player player;
 	public Snake[] snakes;
-	
+
 	public Board(Dice dice) {
 		this.dice = dice;
 		snakes = new Snake[MAX_POSTION - SNAKE_FREE_POSITIONS];
@@ -24,8 +24,11 @@ public class Board {
 	public int useTurn() {
 		int steps = rollDice();
 		player.move(steps);
-		Snake snake = snakes[player.getPosition()-1];
-		if(snake != null) {
+		if (player.getPosition() == MAX_POSTION) {
+			return steps;
+		}
+		Snake snake = snakes[player.getPosition() - SNAKE_FREE_POSITIONS];
+		if (snake != null) {
 			System.out.printf("<;==== Snake encountered at %d ==== %n", snake.getMouthPosition());
 			player.setPosition(snake.getTailPosition());
 		}
@@ -39,11 +42,12 @@ public class Board {
 	public void addPlayer(Player player) {
 		this.player = player;
 	}
-	
+
 	public void addSnake(Snake snake) {
-		snakes[snake.getMouthPosition()-1]= snake;
+		snakes[snake.getMouthPosition() - SNAKE_FREE_POSITIONS] = snake;
 	}
-	public Snake[] getSnakes(){
+
+	public Snake[] getSnakes() {
 		return snakes;
 	}
 }

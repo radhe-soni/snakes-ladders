@@ -36,7 +36,7 @@ class BoardSpec extends Specification {
 		board.addSnake(snake)
 		then:
 		def snakes = board.getSnakes()
-		snakes[14-1] == snake
+		snakes[14-Board.SNAKE_FREE_POSITIONS] == snake
 	}
 	
 	def "player should return to tail if a mouth of snake is encountered"(){
