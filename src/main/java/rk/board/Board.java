@@ -24,7 +24,7 @@ public class Board {
 	public int useTurn() {
 		int steps = rollDice();
 		player.move(steps);
-		if (player.getPosition() == MAX_POSTION) {
+		if (player.getPosition() == MAX_POSTION || player.getPosition() == MIN_POSTION) {
 			return steps;
 		}
 		Snake snake = snakes[player.getPosition() - SNAKE_FREE_POSITIONS];
