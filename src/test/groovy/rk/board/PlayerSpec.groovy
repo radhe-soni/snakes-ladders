@@ -11,7 +11,7 @@ class PlayerSpec extends Specification {
 
 	def "for a dice throw a player should move from initial position by the number on dice throw"(diceValue){
 		given:
-		Player player = new Player()
+		Player player = new Player(1)
 		when:
 		player.move(diceValue)
 		then:
@@ -28,13 +28,13 @@ class PlayerSpec extends Specification {
 
 	def "player should have initial position as zero"(){
 		when:
-		Player player = new Player()
+		Player player = new Player(1)
 		then:
 		player.getPosition() == Board.MIN_POSTION-1
 	}
 	def "player should have maximum position 100"(){
 		given:
-		Player player = new Player()
+		Player player = new Player(1)
 		when:
 		for(int i=1;i<=20;i++)
 			player.move(i*Dice.MAX)

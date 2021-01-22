@@ -6,14 +6,18 @@ public class Board {
 	private static final int SNAKE_FREE_POSITIONS = 2;
 	public static final int MIN_POSTION = 1;
 	public static final int MAX_POSTION = 100;
-
 	private Dice dice;
-	private Player player;
-	public Snake[] snakes;
+	private CircularQueue<Player> players;
+	private Snake[] snakes;
 
 	public Board(Dice dice) {
+		this(dice, 1);
+	}
+
+	public Board(Dice dice, int maxPlayers) {
 		this.dice = dice;
 		snakes = new Snake[MAX_POSTION - SNAKE_FREE_POSITIONS];
+		players = new CircularQueue<>(maxPlayers);
 	}
 
 	public int rollDice() {
@@ -23,24 +27,36 @@ public class Board {
 
 	public int useTurn() {
 		int steps = rollDice();
+		Player player = players.next();
 		player.move(steps);
-		if (player.getPosition() == MAX_POSTION || player.getPosition() == MIN_POSTION) {
+		if (checkTrivialPositions(player.getPosition())) {
 			return steps;
 		}
-		Snake snake = snakes[player.getPosition() - SNAKE_FREE_POSITIONS];
-		if (snake != null) {
-			System.out.printf("<;==== Snake encountered at %d ==== %n", snake.getMouthPosition());
-			player.setPosition(snake.getTailPosition());
-		}
+		checkForSnakeAndAdjustPosition(player);
 		return steps;
 	}
 
-	public Player getPlayer() {
-		return player;
+	private void checkForSnakeAndAdjustPosition(Player player) {
+		int snakePosition = player.getPosition() - SNAKE_FREE_POSITIONS;
+		Snake snake = snakes[snakePosition];
+		if (snake != null && snake.isActive()) {
+			int finalPosition = snake.getFinalPosition();
+			if (finalPosition > 0)
+				player.setPosition(finalPosition);
+		}
+	}
+
+	private boolean checkTrivialPositions(int currentPosition) {
+		return currentPosition == MAX_POSTION || currentPosition == MIN_POSTION;
+	}
+
+	public Player getPlayer(int id) {
+		return players.stream().filter(player -> player.hasId(id)).findFirst()
+				.orElseThrow(() -> new RuntimeException("No such player exists"));
 	}
 
 	public void addPlayer(Player player) {
-		this.player = player;
+		this.players.add(player);
 	}
 
 	public void addSnake(Snake snake) {
@@ -50,4 +66,5 @@ public class Board {
 	public Snake[] getSnakes() {
 		return snakes;
 	}
+
 }

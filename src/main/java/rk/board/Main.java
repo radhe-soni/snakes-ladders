@@ -27,7 +27,6 @@ public class Main {
 			runBoth();
 			break;
 		}
-
 	}
 
 	private static int getChoice() {
@@ -54,9 +53,17 @@ public class Main {
 		board.addSnake(snake);
 		runMode.accept(board);
 	}
+	
+	private static void runWithGreenSnakeDice(Dice dice, Consumer<Board> runMode) {
+		Board board = new Board(dice);
+		Snake snake = new Snake(14, 7);
+		snake.setGreen(true);
+		board.addSnake(snake);
+		runMode.accept(board);
+	}
 
 	private static void autoMode(Board board) {
-		Player player = new Player();
+		Player player = new Player(1);
 		board.addPlayer(player);
 		for (int i = 0; i < 10; i++) {
 			int diceValue = board.useTurn();
@@ -66,7 +73,7 @@ public class Main {
 	}
 
 	private static void interactiveMode(Board board) {
-		Player player = new Player();
+		Player player = new Player(1);
 		board.addPlayer(player);
 		INPUT.nextLine();
 		while (true) {

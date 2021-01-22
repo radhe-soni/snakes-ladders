@@ -2,6 +2,14 @@ package rk.board;
 
 public class Player {
 	private int position;
+	private int id;
+	
+	public int getId() {
+		return id;
+	}
+	public Player(int id) {
+		this.id=id;
+	}
 	/**
 	 * Player is not allowed to move if number of steps
 	 * surpasses 100
@@ -19,4 +27,9 @@ public class Player {
 	public void setPosition(int position) {
 		this.position=position;
 	}
+	
+	public boolean hasId(int id) {
+		return this.getId() == id;
+	}
+
 }
