@@ -42,12 +42,12 @@ public class Snake {
 		return isActive;
 	}
 
-	public int getFinalPosition() {
-		int finalPosition = 0;
+	public void bite(Player player) {
 		System.out.printf("<;==== Snake encountered at %d ==== %n", this.getMouthPosition());
-		finalPosition = this.getTailPosition();
-		if (this.isGreen())
-			this.setActive(false);
-		return finalPosition;
+		if (this.isActive) {
+			player.setPosition(this.tailPosition);
+			if (this.isGreen)
+				this.setActive(false);
+		}
 	}
 }

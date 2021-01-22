@@ -39,10 +39,8 @@ public class Board {
 	private void checkForSnakeAndAdjustPosition(Player player) {
 		int snakePosition = player.getPosition() - SNAKE_FREE_POSITIONS;
 		Snake snake = snakes[snakePosition];
-		if (snake != null && snake.isActive()) {
-			int finalPosition = snake.getFinalPosition();
-			if (finalPosition > 0)
-				player.setPosition(finalPosition);
+		if (snake != null) {
+			snake.bite(player);
 		}
 	}
 
